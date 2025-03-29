@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { Image } from '@/components/ui/image';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,10 +44,17 @@ const Header = () => {
       <div className="container-custom flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center">
+          <div className="h-12 w-12 mr-2 overflow-hidden">
+            <Image 
+              src="/lovable-uploads/b0cdfdea-dced-4249-aea8-afe1923cb8eb.png" 
+              alt="Sanjay Men's Tailors Logo" 
+              className={`h-full w-full object-contain transition-opacity duration-300`}
+            />
+          </div>
           <h1 className={`text-xl md:text-2xl font-bold transition-all ${
             isScrolled ? 'text-tailor-navy' : 'text-white'
           }`}>
-            Sanjay<span className="text-tailor-gold"> Boutique</span>
+            Sanjay<span className="text-tailor-gold"> Men's Tailors</span>
           </h1>
         </Link>
         

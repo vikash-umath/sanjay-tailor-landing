@@ -103,3 +103,22 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #1A2456;
 }
+
+/* Developer attribution */
+.developer-attribution {
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.developer-attribution a {
+  color: #D4AF37;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.developer-attribution a:hover {
+  color: #1A2456;
+  text-decoration: underline;
+}

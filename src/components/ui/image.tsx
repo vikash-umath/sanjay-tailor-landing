@@ -4,14 +4,15 @@ import { cn } from '@/lib/utils';
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   fallbackSrc?: string;
-  aspectRatio?: 'square' | '16:9' | '4:3' | '1:1';
+  aspectRatio?: 'square' | '16:9' | '4:3' | '1:1' | '21:9';
+  alt?: string;
 }
 
 const Image = ({ 
   src, 
   alt = '', 
   className, 
-  fallbackSrc = 'https://images.unsplash.com/photo-1483058712412-4245e9b90334', 
+  fallbackSrc = '/placeholder.svg', 
   aspectRatio,
   ...props 
 }: ImageProps) => {
@@ -47,6 +48,9 @@ const Image = ({
     case '4:3':
       aspectRatioClass = 'aspect-4/3';
       break;
+    case '21:9':
+      aspectRatioClass = 'aspect-21/9';
+      break;
     default:
       aspectRatioClass = '';
   }
@@ -70,6 +74,12 @@ const Image = ({
         )}
         {...props}
       />
+
+      {error && fallbackSrc === imgSrc && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+          <p className="text-gray-500 text-sm text-center px-2">Image not available</p>
+        </div>
+      )}
     </div>
   );
 };
