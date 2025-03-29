@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Image } from '@/components/ui/image';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +12,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-tailor-gold">Sanjay Men's Tailors</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <Image 
+                src="/lovable-uploads/b0cdfdea-dced-4249-aea8-afe1923cb8eb.png" 
+                alt="Sanjay Men's Tailors" 
+                className="h-12 w-12 rounded-full"
+              />
+              <h3 className="text-xl font-bold text-tailor-gold">Sanjay Men's Tailors</h3>
+            </div>
             <p className="text-gray-300 mb-4">
               Premium tailoring services in Ashta, bringing your style to life with expert craftsmanship and attention to detail.
             </p>
@@ -55,6 +63,11 @@ const Footer = () => {
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-tailor-gold transition-colors">
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link to="/login" className="text-gray-300 hover:text-tailor-gold transition-colors">
+                  Admin Login
                 </Link>
               </li>
             </ul>

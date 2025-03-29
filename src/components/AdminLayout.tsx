@@ -1,12 +1,24 @@
 
 import { useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, Navigate } from 'react-router-dom';
 import { Image } from '@/components/ui/image';
 import { SidebarProvider, Sidebar, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
 import { GalleryHorizontal, Image as ImageIcon, PlusCircle, Settings, Layers } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
 
 const AdminLayout = () => {
   const location = useLocation();
+  const { isAuthenticated, isAdmin } = useAuth();
+  
+  // Redirect to login if not authenticated
+  if (!isAuthenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+  
+  // Redirect to home if not admin
+  if (!isAdmin) {
+    return <Navigate to="/" replace />;
+  }
   
   return (
     <SidebarProvider defaultOpen={true}>
@@ -26,43 +38,51 @@ const AdminLayout = () => {
             
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton 
-                  isActive={location.pathname === '/admin'} 
-                  tooltip="Dashboard"
-                >
-                  <Settings size={20} className="mr-2" />
-                  <span>Dashboard</span>
-                </SidebarMenuButton>
+                <Link to="/admin">
+                  <SidebarMenuButton 
+                    isActive={location.pathname === '/admin'} 
+                    tooltip="Dashboard"
+                  >
+                    <Settings size={20} className="mr-2" />
+                    <span>Dashboard</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
               
               <SidebarMenuItem>
-                <SidebarMenuButton 
-                  isActive={location.pathname === '/admin/categories'} 
-                  tooltip="Categories"
-                >
-                  <Layers size={20} className="mr-2" />
-                  <span>Categories</span>
-                </SidebarMenuButton>
+                <Link to="/admin/categories">
+                  <SidebarMenuButton 
+                    isActive={location.pathname === '/admin/categories'} 
+                    tooltip="Categories"
+                  >
+                    <Layers size={20} className="mr-2" />
+                    <span>Categories</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
 
               <SidebarMenuItem>
-                <SidebarMenuButton 
-                  isActive={location.pathname === '/admin/gallery'} 
-                  tooltip="Gallery"
-                >
-                  <GalleryHorizontal size={20} className="mr-2" />
-                  <span>Gallery</span>
-                </SidebarMenuButton>
+                <Link to="/admin/gallery">
+                  <SidebarMenuButton 
+                    isActive={location.pathname === '/admin/gallery'} 
+                    tooltip="Gallery"
+                  >
+                    <GalleryHorizontal size={20} className="mr-2" />
+                    <span>Gallery</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
               
               <SidebarMenuItem>
-                <SidebarMenuButton 
-                  isActive={location.pathname === '/admin/add-item'} 
-                  tooltip="Add New"
-                >
-                  <PlusCircle size={20} className="mr-2" />
-                  <span>Add New</span>
-                </SidebarMenuButton>
+                <Link to="/admin/add-item">
+                  <SidebarMenuButton 
+                    isActive={location.pathname === '/admin/add-item'} 
+                    tooltip="Add New"
+                  >
+                    <PlusCircle size={20} className="mr-2" />
+                    <span>Add New</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarContent>
