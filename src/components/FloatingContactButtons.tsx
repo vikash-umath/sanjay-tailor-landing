@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const FloatingContactButtons = () => {
-  const phoneNumber = "+911234567890"; // Replace with the actual phone number
+  const phoneNumber = "+918817212379"; // Replace with the actual phone number
   const whatsappMessage = "Hello, I'd like to know more about your tailoring services.";
   
   const handleWhatsAppClick = () => {

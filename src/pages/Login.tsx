@@ -50,7 +50,7 @@ const Login = () => {
           <CardHeader className="space-y-1 text-center">
             <div className="flex justify-center mb-4">
               <Image 
-                src="/lovable-uploads/b0cdfdea-dced-4249-aea8-afe1923cb8eb.png" 
+                src="/lovable-uploads/logo.png" 
                 alt="Sanjay Men's Tailors" 
                 className="h-16 w-16"
               />

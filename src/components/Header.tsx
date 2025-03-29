@@ -46,7 +46,7 @@ const Header = () => {
         <Link to="/" className="flex items-center">
           <div className="h-12 w-12 mr-2 overflow-hidden">
             <Image 
-              src="/lovable-uploads/b0cdfdea-dced-4249-aea8-afe1923cb8eb.png" 
+              src="/lovable-uploads/logo.png" 
               alt="Sanjay Men's Tailors Logo" 
               className={`h-full w-full object-contain transition-opacity duration-300`}
             />
@@ -76,7 +76,7 @@ const Header = () => {
             </Link>
           ))}
           
-          <Link 
+          {/* <Link 
             to="/admin"
             className={`font-medium transition-all hover:text-tailor-gold flex items-center ${
               location.pathname.startsWith('/admin') 
@@ -89,7 +89,7 @@ const Header = () => {
           >
             <Settings size={16} className="mr-1" />
             <span className="sr-only md:not-sr-only">Admin</span>
-          </Link>
+          </Link> */}
         </nav>
 
         {/* Mobile Menu Button */}

@@ -92,7 +92,7 @@ const EnquiryForm = () => {
               onChange={handleChange}
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-tailor-gold"
-              placeholder="+91 98765 43210"
+              placeholder="+91 8817212379"
             />
           </div>
         </div>

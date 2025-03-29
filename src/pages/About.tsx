@@ -95,7 +95,7 @@ const About = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1604176424472-49595db3f407?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" 
+                  src="https://content.jdmagicbox.com/comp/bhopal/f9/0755px755.x755.140430144020.k9f9/catalogue/asian-tailors-ibrahimpura-bhopal-tailors-6etb03dlnv.jpg" 
                   alt="Tailoring Shop" 
                   className="rounded-lg shadow-lg h-40 sm:h-48 md:h-64 w-full object-cover"
                 />
@@ -107,7 +107,7 @@ const About = () => {
               </div>
               <div className="space-y-4 pt-8">
                 <img 
-                  src="https://images.unsplash.com/photo-1593030942428-a5451dca1e85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" 
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiN8vdgx95CV8o1qYSYtSPEBgoUGtyE5d_WQ&s" 
                   alt="Fabric Selection" 
                   className="rounded-lg shadow-lg h-40 sm:h-64 md:h-80 w-full object-cover"
                 />
@@ -199,7 +199,7 @@ const About = () => {
       </section>
       
       {/* Team Section */}
-      <section className="py-20">
+      <section className="py-20 hidden">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="section-title !after:left-1/2 !after:-translate-x-1/2">Meet Our Team</h2>

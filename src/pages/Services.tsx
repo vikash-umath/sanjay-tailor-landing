@@ -49,7 +49,7 @@ const Services = () => {
       id: 'kurta-pajama',
       title: 'Kurta Pajama',
       description: 'Traditional and contemporary designs tailored to perfection with comfort and style in mind.',
-      image: 'https://images.unsplash.com/photo-1604901013586-05036e9a1e25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80',
+      image: 'https://wholetex.sgp1.cdn.digitaloceanspaces.com/full/couple-goal-vol-2-cotton-kurta-pajama-270.jpg',
       features: [
         'Custom designs for every occasion',
         'Wide range of fabrics and colors',
@@ -77,7 +77,7 @@ const Services = () => {
       id: 'formal-shirts',
       title: 'Formal Shirts',
       description: 'Custom-made shirts that ensure perfect fit, exceptional comfort, and professional appearance.',
-      image: 'https://images.unsplash.com/photo-1541336744922-77e3a63498bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80',
+      image: 'https://www.beyoung.in/api/cache/catalog/products/shirt_squre_image_update_14_3_2022/navy_blue_cotton_solid_shirts_for_men_base_02_05_2024_700x933.jpg',
       features: [
         'Custom collar and cuff designs',
         'Various fabric options from cotton to linen',

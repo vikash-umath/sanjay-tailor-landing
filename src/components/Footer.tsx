@@ -14,7 +14,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <Image 
-                src="/lovable-uploads/b0cdfdea-dced-4249-aea8-afe1923cb8eb.png" 
+                src="/lovable-uploads/logo.png" 
                 alt="Sanjay Men's Tailors" 
                 className="h-12 w-12 rounded-full"
               />
@@ -111,12 +111,12 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={20} className="mr-2 mt-1 text-tailor-gold" />
-                <span className="text-gray-300">123 Tailor Street, Ashta, Madhya Pradesh, India</span>
+                <span className="text-gray-300 capitalize">Rahore mandir near mukati petrol pump, Ashta, Madhya Pradesh, India</span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-2 text-tailor-gold" />
                 <a href="tel:+911234567890" className="text-gray-300 hover:text-tailor-gold transition-colors">
-                  +91 123 456 7890
+                  +918817212379
                 </a>
               </li>
               <li className="flex items-center">

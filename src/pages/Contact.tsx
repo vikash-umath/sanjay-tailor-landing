@@ -40,7 +40,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg text-tailor-navy mb-1">Our Location</h4>
-                    <p className="text-gray-700">Main Market, Near Bus Stand,<br />Ashta, Madhya Pradesh, India</p>
+                    <p className="text-gray-700">Rathore Mandir Near Mukati Petrol Pump,<br />Ashta, Madhya Pradesh, India</p>
                   </div>
                 </div>
                 
@@ -50,7 +50,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg text-tailor-navy mb-1">Phone Number</h4>
-                    <p className="text-gray-700">+91 98765 43210</p>
+                    <p className="text-gray-700">+91 8817212379</p>
                   </div>
                 </div>
                 
