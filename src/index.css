@@ -94,10 +94,78 @@
   }
   
   .image-card img {
-    @apply transition-all duration-500 hover:scale-110;
+    @apply transition-all duration-500 hover:scale-110 w-full h-full object-cover;
   }
   
   .service-card {
     @apply bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-tailor-gold;
   }
+  
+  /* 3D effect classes */
+  .perspective-card {
+    @apply perspective-1000;
+  }
+  
+  .card-3d {
+    @apply transition-transform duration-300 ease-out transform-gpu;
+  }
+  
+  .card-3d:hover {
+    transform: rotateX(5deg) rotateY(5deg);
+  }
+  
+  .floating-card {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .testimonial-card-3d {
+    @apply relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300;
+  }
+  
+  .testimonial-card-3d::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-tailor-gold/30 opacity-0 transition-opacity duration-300;
+  }
+  
+  .testimonial-card-3d:hover::before {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Slide in animation */
+@keyframes slide-in {
+  0% { transform: translateX(-100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
 }

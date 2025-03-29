@@ -93,6 +93,9 @@ const Footer = () => {
           <p className="text-sm text-gray-400">
             &copy; {currentYear} Sanjay Men's Boutique Collection. All Rights Reserved.
           </p>
+          <p className="text-xs text-gray-500 mt-2">
+            Developed by <a href="https://www.mahitechnocrafts.in/" target="_blank" rel="noopener noreferrer" className="text-tailor-gold hover:underline">Mahi Technocrafts</a>
+          </p>
         </div>
       </div>
     </footer>
