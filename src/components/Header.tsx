@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Settings } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 
 const Header = () => {
@@ -75,6 +75,21 @@ const Header = () => {
               {link.name}
             </Link>
           ))}
+          
+          <Link 
+            to="/admin"
+            className={`font-medium transition-all hover:text-tailor-gold flex items-center ${
+              location.pathname.startsWith('/admin') 
+                ? 'text-tailor-gold' 
+                : isScrolled 
+                  ? 'text-tailor-navy' 
+                  : 'text-white'
+            }`}
+            aria-label="Admin Panel"
+          >
+            <Settings size={16} className="mr-1" />
+            <span className="sr-only md:not-sr-only">Admin</span>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -106,6 +121,15 @@ const Header = () => {
                 {link.name}
               </Link>
             ))}
+            <Link
+              to="/admin"
+              className={`font-medium py-2 transition-all hover:text-tailor-gold flex items-center ${
+                location.pathname.startsWith('/admin') ? 'text-tailor-gold' : 'text-tailor-navy'
+              }`}
+            >
+              <Settings size={16} className="mr-2" />
+              Admin Panel
+            </Link>
           </div>
         </nav>
       )}
