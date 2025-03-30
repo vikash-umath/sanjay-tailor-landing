@@ -20,6 +20,8 @@ import Dashboard from "./pages/admin/Dashboard";
 import AdminGallery from "./pages/admin/Gallery";
 import Categories from "./pages/admin/Categories";
 import AddItem from "./pages/admin/AddItem";
+import OpenRoute from './components/auth/OpenRoute'
+
 
 const queryClient = new QueryClient();
 
@@ -36,7 +38,12 @@ const App = () => (
             <Route path="/services" element={<Services />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={
+              <OpenRoute>
+              <Login />
+              </OpenRoute>
+          
+          } />
             
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminLayout />}>

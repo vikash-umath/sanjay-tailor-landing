@@ -27,7 +27,7 @@ const Footer = () => {
               <a href="#" className="text-white hover:text-tailor-gold transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-white hover:text-tailor-gold transition-colors">
+              <a href="https://www.instagram.com/sanjaymens_boutique" className="text-white hover:text-tailor-gold transition-colors">
                 <Instagram size={20} />
               </a>
               <a href="#" className="text-white hover:text-tailor-gold transition-colors">
@@ -66,7 +66,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/login" className="text-gray-300 hover:text-tailor-gold transition-colors">
+                <Link to="/admin/gallery" className="text-gray-300 hover:text-tailor-gold transition-colors">
                   Admin Login
                 </Link>
               </li>

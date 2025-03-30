@@ -9,6 +9,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useAuth } from '@/hooks/useAuth';
 import { Image } from '@/components/ui/image';
+import { useDispatch } from 'react-redux';
+import { setToken, setUser } from "@/redux/authSlice";
+import axios from "axios"
+import Swal from 'sweetalert2';
 
 interface LocationState {
   from?: {
@@ -23,19 +27,41 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  
+  const dispatch = useDispatch();
+
   const locationState = location.state as LocationState;
   const from = locationState?.from?.pathname || '/admin';
+  const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsLoading(true);
-    
+  
     try {
-      const success = await login(username, password);
-      if (success) {
-        navigate(from, { replace: true });
+      const response = await axios.post(`${BASE_URL}/auth/login`, { email: username, password });
+  
+      if (response?.status === 200) {
+        console.log("enter ");
+        dispatch(setToken(response.data.token));
+        dispatch(setUser(response.data.user));
+  
+        // ✅ Show success alert
+        Swal.fire({
+          title: "Login Successful!",
+          text: "Welcome to the admin panel.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+  
       }
+    } catch (error) {
+      // ❌ Show error alert
+      Swal.fire({
+        title: "Login Failed!",
+        text: "Invalid username or password.",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
     } finally {
       setIsLoading(false);
     }

@@ -84,7 +84,7 @@ const Contact = () => {
                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="bg-tailor-cream p-3 rounded-lg text-tailor-navy hover:bg-tailor-gold transition-colors">
                     <Facebook size={24} />
                   </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="bg-tailor-cream p-3 rounded-lg text-tailor-navy hover:bg-tailor-gold transition-colors">
+                  <a href="https://www.instagram.com/sanjaymens_boutique/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="bg-tailor-cream p-3 rounded-lg text-tailor-navy hover:bg-tailor-gold transition-colors">
                     <Instagram size={24} />
                   </a>
                 </div>

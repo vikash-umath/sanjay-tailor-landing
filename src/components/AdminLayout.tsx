@@ -5,18 +5,19 @@ import { Image } from '@/components/ui/image';
 import { SidebarProvider, Sidebar, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
 import { GalleryHorizontal, Image as ImageIcon, PlusCircle, Settings, Layers } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
-
+import  {useProfile } from "../redux/useProfile"
 const AdminLayout = () => {
   const location = useLocation();
-  const { isAuthenticated, isAdmin } = useAuth();
-  
+ 
+  const { token, user } = useProfile(); // ✅ Easily access user & token
+
   // Redirect to login if not authenticated
-  if (!isAuthenticated) {
+  if (!token) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
   
   // Redirect to home if not admin
-  if (!isAdmin) {
+  if (!user) {
     return <Navigate to="/" replace />;
   }
   
@@ -37,7 +38,7 @@ const AdminLayout = () => {
             </div>
             
             <SidebarMenu>
-              <SidebarMenuItem>
+              {/* <SidebarMenuItem>
                 <Link to="/admin">
                   <SidebarMenuButton 
                     isActive={location.pathname === '/admin'} 
@@ -47,9 +48,9 @@ const AdminLayout = () => {
                     <span>Dashboard</span>
                   </SidebarMenuButton>
                 </Link>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
               
-              <SidebarMenuItem>
+              {/* <SidebarMenuItem>
                 <Link to="/admin/categories">
                   <SidebarMenuButton 
                     isActive={location.pathname === '/admin/categories'} 
@@ -59,7 +60,7 @@ const AdminLayout = () => {
                     <span>Categories</span>
                   </SidebarMenuButton>
                 </Link>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
 
               <SidebarMenuItem>
                 <Link to="/admin/gallery">
