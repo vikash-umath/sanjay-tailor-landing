@@ -60,7 +60,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg text-tailor-navy mb-1">Email Address</h4>
-                    <p className="text-gray-700">info@sanjayboutique.com</p>
+                    <p className="text-gray-700">info@sanjaymenstailor.com</p>
                   </div>
                 </div>
                 
@@ -111,8 +111,8 @@ const Contact = () => {
           
           <div className="rounded-lg overflow-hidden shadow-xl">
             <iframe
-              title="Sanjay Men's Boutique Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29536.367340486235!2d76.67944573476563!3d23.01746900000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39635a585e9c3605%3A0xa13f6a552f02077f!2sAshta%2C%20Madhya%20Pradesh%20466116!5e0!3m2!1sen!2sin!4v1686824548161!5m2!1sen!2sin"
+              title="Sanjay Mens Tailor And Boutique Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.1582483975985!2d76.72219201010738!3d23.01796111641486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397cc5a67b78ad91%3A0x6ac11b6fd393f425!2sSanjay%20Mens%20Tailor%20And%20Boutique%20collection!5e0!3m2!1sen!2sin!4v1744222565170!5m2!1sen!2sin"
               width="100%"
               height="450"
               style={{ border: 0 }}
