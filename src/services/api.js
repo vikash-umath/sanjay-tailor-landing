@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080/api/v1"
+const BASE_URL = import.meta.env.VITE_APP_BASE_URL
 export const admin = {
     CREATE_GALLERY: BASE_URL + "/gallery/create",
     DELETE_GALLERY_IMAGE : BASE_URL + "/gallery/delete-single",
