@@ -1,130 +1,141 @@
-"use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import { getAllGalleryAPI } from "@/services/operation/admin";
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 
-const BackendGallery = () => {
+import { useEffect, useState } from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getAllGalleryAPI, getAllVideosAPI } from '@/services/operation/admin';
+import ImageCard3D from '@/components/ImageCard3D';
+import SEO from '@/components/SEO';
+import GalleryStructuredData from '@/components/GalleryStructuredData';
+
+const Gallery = () => {
   const [gallery, setGallery] = useState<any[]>([]);
-  const [selectedType, setSelectedType] = useState("all");
+  const [videos, setVideos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getAllGallery = async () => {
+    const fetchData = async () => {
       try {
-        const response = await getAllGalleryAPI();
-        if (Array.isArray(response)) {
-          setGallery(response);
-        } else {
-          setGallery([]);
+        const galleryData = await getAllGalleryAPI();
+        const videosData = await getAllVideosAPI();
+        
+        if (Array.isArray(galleryData)) {
+          setGallery(galleryData);
+        }
+        
+        if (Array.isArray(videosData)) {
+          setVideos(videosData);
         }
       } catch (error) {
-        console.error("Error fetching gallery:", error);
-        setGallery([]);
+        console.error("Error fetching gallery data:", error);
       } finally {
         setLoading(false);
       }
     };
-    getAllGallery();
+
+    fetchData();
   }, []);
 
-  const handleTypeClick = (type: string) => {
-    setSelectedType(type);
-  };
-
-  const uniqueTypes = gallery?.length
-    ? ["all", ...new Set(gallery.map((item) => item.type))]
-    : [];
-
-  const filteredImages = gallery
-    .filter((item) => selectedType === "all" || item.type === selectedType)
-    .flatMap((item) =>
-      item.images.map((img) => ({
-        url: img.url,
-        title: item.title,
-        public_id: img.public_id,
-        type: item.type,
-      }))
-    );
-
-  function removeNumbersFromString(str: string) {
-    return str?.replace(/\d+/g, "") || "";
-  }
+  // Format gallery images for structured data
+  const structuredDataImages = gallery.flatMap(category => 
+    category.images.map(img => ({
+      url: img.url,
+      name: `${category.title} - Sanjay Mens Tailor`,
+      description: category.description
+    }))
+  );
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-gray-700 text-white min-h-screen">
+    <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Photo Gallery | Sanjay Mens Tailor And Boutique collection"
+        description="Browse our gallery showcasing premium tailoring work for kurta pajama, coat, pant, and designer shirts in Ashta and Indore. View our craftsmanship."
+        pathname="gallery"
+        keywords="tailor gallery, bespoke clothing gallery, kurta pajama designs, coat pant styles, Ashta tailor portfolio, Indore tailor gallery"
+      />
+      <GalleryStructuredData images={structuredDataImages} />
+      
       <Header />
-      <section className="relative pt-24 pb-16 text-center">
-        <motion.div 
-          initial={{ opacity: 0, y: -50 }} 
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="container mx-auto"
-        >
-          <h1 className="text-5xl font-extrabold text-yellow-400 mb-4">Our Gallery</h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Explore our finest custom-made collections designed for our prestigious clients.
-          </p>
-        </motion.div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        {loading && <p className="text-center text-gray-300">Loading gallery...</p>}
-
-        {!loading && gallery.length === 0 && (
-          <div className="text-center text-yellow-400 text-lg">
-            No gallery items available.
-          </div>
-        )}
-
-        {uniqueTypes.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-4 mb-6">
-            {uniqueTypes.map((type) => (
-              <button
-                key={type}
-                onClick={() => handleTypeClick(type)}
-                className={`px-6 py-2 text-lg font-bold rounded-full border-2 transition-all border-yellow-400 
-                ${selectedType === type ? "bg-yellow-400 text-gray-900" : "text-yellow-400 hover:bg-yellow-400 hover:text-gray-900"}`}
-              >
-                {type === "all" ? "All Photos" : removeNumbersFromString(type)}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {filteredImages.length > 0 && (
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredImages.map((img) => (
-              <motion.div 
-                key={img.public_id} 
-                className="relative group overflow-hidden rounded-xl shadow-lg"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <img
-                  src={img.url}
-                  alt="Gallery Image"
-                  className="w-full h-64 object-cover rounded-xl transition-all duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <h3 className="text-white text-lg font-semibold mb-2">{img.title}</h3>
-                  <a
-                    href="tel:918817212379"
-                    className="bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg font-semibold shadow-md transition-all duration-300 hover:bg-yellow-500"
-                  >
-                    Book Now
-                  </a>
+      
+      <main className="pt-24 pb-16">
+        <div className="container-custom">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 text-tailor-navy">Our Gallery</h1>
+          <p className="text-gray-600 mb-8">Explore our collection of premium tailored garments</p>
+          
+          <Tabs defaultValue="photos" className="w-full">
+            <TabsList className="mb-8">
+              <TabsTrigger value="photos">Photos</TabsTrigger>
+              <TabsTrigger value="videos">Videos</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="photos">
+              {loading ? (
+                <div className="flex justify-center items-center min-h-[300px]">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tailor-gold"></div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-      </div>
+              ) : gallery.length === 0 ? (
+                <div className="text-center py-12">
+                  <p className="text-gray-500">No gallery items found.</p>
+                </div>
+              ) : (
+                <div className="space-y-12">
+                  {gallery.map((category) => (
+                    <div key={category._id} className="space-y-4">
+                      <h2 className="text-2xl font-semibold text-tailor-navy">{category.title}</h2>
+                      <p className="text-gray-600 mb-4">{category.description}</p>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {category.images.map((image, index) => (
+                          <ImageCard3D 
+                            key={image._id || index}
+                            imageSrc={image.url}
+                            alt={`${category.title} - Image ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </TabsContent>
+            
+            <TabsContent value="videos">
+              {loading ? (
+                <div className="flex justify-center items-center min-h-[300px]">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tailor-gold"></div>
+                </div>
+              ) : videos.length === 0 ? (
+                <div className="text-center py-12">
+                  <p className="text-gray-500">No videos found.</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {videos.map((video) => (
+                    <div key={video._id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                      <div className="aspect-video">
+                        <iframe
+                          src={video.url}
+                          title={video.title}
+                          className="w-full h-full"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-semibold text-lg">{video.title}</h3>
+                        <p className="text-gray-600 text-sm mt-1">{video.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </TabsContent>
+          </Tabs>
+        </div>
+      </main>
+      
       <Footer />
     </div>
   );
 };
 
-export default BackendGallery;
+export default Gallery;

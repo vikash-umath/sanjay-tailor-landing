@@ -17,3 +17,9 @@ Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
+
+# Disallow some common problematic paths
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /*?*
