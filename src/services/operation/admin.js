@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 const {
   CREATE_GALLERY,
   CREATE_VIDEO,
-
   IMAGE_UPLOAD,
   GET_ALL_GALLERY,
   GET_ALL_VIDEOS,
@@ -155,25 +154,24 @@ export const getAllGalleryAPI = async () => {
   }
 };
 
-
 export const getAllVideoAPI = async () => {
   let result = [];
   try {
     const response = await apiConnector("GET", GET_ALL_VIDEOS);
 
-    console.log("Gallery ............", response);
+    console.log("Gallery Videos ............", response);
 
     if (!response?.data?.success) {
-      throw new Error("Could Not Find Gallery");
+      throw new Error("Could Not Find Gallery Videos");
     }
 
     result = response?.data?.gallerys;
     return result;
   } catch (error) {
+    console.error("Error fetching video gallery:", error);
     return false;
   }
 };
-
 
 export const deleteGalleryAPI = async (id) => {
   let swalLoadingInstance;
@@ -212,7 +210,6 @@ export const deleteGalleryAPI = async (id) => {
     }
   }
 };
-
 
 export const deleteImageFromGallery = async (galleryId, publicId) => {
   let swalLoadingInstance;

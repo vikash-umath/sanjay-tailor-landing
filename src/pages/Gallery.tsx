@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getAllGalleryAPI, getAllVideosAPI } from '@/services/operation/admin';
+import { getAllGalleryAPI } from '@/services/operation/admin';
+import { getAllVideoAPI } from '@/services/operation/admin'; // Fixed import name
 import ImageCard3D from '@/components/ImageCard3D';
 import SEO from '@/components/SEO';
 import GalleryStructuredData from '@/components/GalleryStructuredData';
@@ -17,7 +18,7 @@ const Gallery = () => {
     const fetchData = async () => {
       try {
         const galleryData = await getAllGalleryAPI();
-        const videosData = await getAllVideosAPI();
+        const videosData = await getAllVideoAPI(); // Changed to getAllVideoAPI
         
         if (Array.isArray(galleryData)) {
           setGallery(galleryData);
@@ -88,7 +89,7 @@ const Gallery = () => {
                         {category.images.map((image, index) => (
                           <ImageCard3D 
                             key={image._id || index}
-                            imageSrc={image.url}
+                            src={image.url} 
                             alt={`${category.title} - Image ${index + 1}`}
                           />
                         ))}
