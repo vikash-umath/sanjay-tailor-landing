@@ -53,9 +53,9 @@ const Index = () => {
         
         <div className="relative h-full container-custom flex flex-col justify-center">
           <div className="max-w-2xl staggered-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+            <h4 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
               Crafting Elegance with <span className="text-tailor-gold">Sanjay Boutique</span>
-            </h1>
+            </h4>
             <p className="text-lg md:text-xl text-gray-200 mb-8">
               Premium tailoring services in Ashta, bringing your style to life with expert craftsmanship and attention to detail.
             </p>

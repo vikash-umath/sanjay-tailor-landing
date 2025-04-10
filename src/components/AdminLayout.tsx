@@ -32,9 +32,9 @@ const AdminLayout = () => {
                 alt="Sanjay Men's Tailors" 
                 className="h-10 w-10"
               />
-              <h1 className="text-xl font-bold">
+              <h4 className="text-xl font-bold">
                 Admin Panel
-              </h1>
+              </h4>
             </div>
             
             <SidebarMenu>

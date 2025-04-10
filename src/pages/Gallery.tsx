@@ -62,7 +62,7 @@ const BackendGallery = () => {
           transition={{ duration: 0.5 }}
           className="container mx-auto"
         >
-          <h1 className="text-5xl font-extrabold text-yellow-400 mb-4">Our Gallery</h1>
+          <h4 className="text-5xl font-extrabold text-yellow-400 mb-4">Our Gallery</h4>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Explore our finest custom-made collections designed for our prestigious clients.
           </p>

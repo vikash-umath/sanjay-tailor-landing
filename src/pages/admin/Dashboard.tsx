@@ -16,7 +16,7 @@ const Dashboard = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-tailor-navy">Admin Dashboard</h1>
+        <h4 className="text-3xl font-bold text-tailor-navy">Admin Dashboard</h4>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -57,7 +57,7 @@ const About = () => {
       <section className="relative pt-24 pb-16 bg-tailor-navy">
         <div className="container-custom relative z-10">
           <div className="pt-16 pb-6 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About Us</h1>
+            <h4 className="text-4xl md:text-5xl font-bold text-white mb-4">About Us</h4>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Learn about our journey, our craft, and our commitment to excellence in tailoring.
             </p>
