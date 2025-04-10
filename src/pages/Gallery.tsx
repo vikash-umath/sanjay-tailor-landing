@@ -1,59 +1,61 @@
-"use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import { getAllGalleryAPI } from "@/services/operation/admin";
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 
-const BackendGallery = () => {
+import { useEffect, useState } from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getAllGalleryAPI } from '@/services/operation/admin';
+import { getAllVideoAPI } from '@/services/operation/admin'; // Fixed import name
+import ImageCard3D from '@/components/ImageCard3D';
+import SEO from '@/components/SEO';
+import GalleryStructuredData from '@/components/GalleryStructuredData';
+
+const Gallery = () => {
   const [gallery, setGallery] = useState<any[]>([]);
-  const [selectedType, setSelectedType] = useState("all");
+  const [videos, setVideos] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getAllGallery = async () => {
+    const fetchData = async () => {
       try {
-        const response = await getAllGalleryAPI();
-        if (Array.isArray(response)) {
-          setGallery(response);
-        } else {
-          setGallery([]);
+        const galleryData = await getAllGalleryAPI();
+        const videosData = await getAllVideoAPI(); // Changed to getAllVideoAPI
+        
+        if (Array.isArray(galleryData)) {
+          setGallery(galleryData);
+        }
+        
+        if (Array.isArray(videosData)) {
+          setVideos(videosData);
         }
       } catch (error) {
-        console.error("Error fetching gallery:", error);
-        setGallery([]);
+        console.error("Error fetching gallery data:", error);
       } finally {
         setLoading(false);
       }
     };
-    getAllGallery();
+
+    fetchData();
   }, []);
 
-  const handleTypeClick = (type: string) => {
-    setSelectedType(type);
-  };
-
-  const uniqueTypes = gallery?.length
-    ? ["all", ...new Set(gallery.map((item) => item.type))]
-    : [];
-
-  const filteredImages = gallery
-    .filter((item) => selectedType === "all" || item.type === selectedType)
-    .flatMap((item) =>
-      item.images.map((img) => ({
-        url: img.url,
-        title: item.title,
-        public_id: img.public_id,
-        type: item.type,
-      }))
-    );
-
-  function removeNumbersFromString(str: string) {
-    return str?.replace(/\d+/g, "") || "";
-  }
+  // Format gallery images for structured data
+  const structuredDataImages = gallery.flatMap(category => 
+    category.images.map(img => ({
+      url: img.url,
+      name: `${category.title} - Sanjay Mens Tailor`,
+      description: category.description
+    }))
+  );
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-gray-700 text-white min-h-screen">
+    <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Photo Gallery | Sanjay Mens Tailor And Boutique collection"
+        description="Browse our gallery showcasing premium tailoring work for kurta pajama, coat, pant, and designer shirts in Ashta and Indore. View our craftsmanship."
+        pathname="gallery"
+        keywords="tailor gallery, bespoke clothing gallery, kurta pajama designs, coat pant styles, Ashta tailor portfolio, Indore tailor gallery"
+      />
+      <GalleryStructuredData images={structuredDataImages} />
+      
       <Header />
       <section className="relative pt-24 pb-16 text-center">
         <motion.div 
@@ -117,14 +119,34 @@ const BackendGallery = () => {
                     Book Now
                   </a>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-      </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {videos.map((video) => (
+                    <div key={video._id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                      <div className="aspect-video">
+                        <iframe
+                          src={video.url}
+                          title={video.title}
+                          className="w-full h-full"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-semibold text-lg">{video.title}</h3>
+                        <p className="text-gray-600 text-sm mt-1">{video.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </TabsContent>
+          </Tabs>
+        </div>
+      </main>
+      
       <Footer />
     </div>
   );
 };
 
-export default BackendGallery;
+export default Gallery;
