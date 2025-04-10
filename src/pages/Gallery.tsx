@@ -125,10 +125,10 @@ const Gallery = () => {
           )}
 
           <Tabs defaultValue="photos" className="w-full">
-            <TabsList className="w-full max-w-md mx-auto mb-8 bg-tailor-cream/20">
+            {/* <TabsList className="w-full max-w-md mx-auto mb-8 bg-tailor-cream/20">
               <TabsTrigger value="photos" className="flex-1 py-3">Photos</TabsTrigger>
               <TabsTrigger value="videos" className="flex-1 py-3">Videos</TabsTrigger>
-            </TabsList>
+            </TabsList> */}
             
             <TabsContent value="photos">
               {uniqueTypes.length > 0 && (
